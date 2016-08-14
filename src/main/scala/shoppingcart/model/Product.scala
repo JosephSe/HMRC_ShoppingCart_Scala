@@ -1,7 +1,9 @@
 package shoppingcart.model
 
 trait Product {
+  def cost:Double
+  def typ:String
 }
 
-case class Apple() extends Product
-case class Orange()  extends Product
+case class Apple(val cost:Double = .6, val typ:String = "Apple") extends Product
+case class Orange(val cost:Double = .25, val typ:String = "Orange") extends Product
