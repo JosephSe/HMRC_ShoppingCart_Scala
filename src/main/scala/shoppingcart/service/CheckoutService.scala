@@ -6,10 +6,12 @@ trait CheckoutService {
   def getTotal(items: List[String]): Double
 }
 
-class CheckoutServiceImpl extends CheckoutService {
+class CheckoutServiceImpl extends CheckoutService with OfferStrategy {
   override def getTotal(items: List[String]): Double = {
     getSumTotal {
-      items.map(Product(_)).flatten
+      applyOffers {
+        items.map(Product(_)).flatten
+      }
     }
   }
 
